@@ -12,8 +12,7 @@
 default: &default
   adapter: mysql2
   encoding: utf8
-  pool: 5
-  timeout: 5000
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
   username: root
   password:
   host: localhost
@@ -51,3 +50,5 @@ test:
 production:
   <<: *default
   database: fbsapp_production
+  username: fbsapp
+  password: <%= ENV['FBSAPP_DATABASE_PASSWORD'] %>
