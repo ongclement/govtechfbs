@@ -1,6 +1,4 @@
 Rails.application.routes.draw do
-    get '*path' => redirect('/')
-
     get 'welcome/index'
 
     get    '/login',   to: 'sessions#new'
@@ -12,5 +10,7 @@ Rails.application.routes.draw do
     resources :bookings
 
     root 'sessions#new'
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+
+    # IMPORTANT! This line must be read last and no routes should be below this
+    get '*path' => redirect('/')
 end
