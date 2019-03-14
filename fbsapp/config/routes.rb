@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+    get '*path' => redirect('/')
+
     get 'welcome/index'
 
     get    '/login',   to: 'sessions#new'
