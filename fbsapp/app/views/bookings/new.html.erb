@@ -1,37 +1,39 @@
-<h1>New Booking</h1>
-<%= form_with scope: :booking, url: bookings_path, local: true do |form| %>
+<div class="py-3">
+    <h3>New Booking</h3>
+</div>
+<div>
+    <%= form_with scope: :booking, url: bookings_path, local: true do |form| %>
+        <div class="d-flex my-3">
+            <div class="mx-2">
+                <a class="pr-2">User ID</a>
+                <%= form.text_field :userid %>
+            </div>
+            <div>
+                <a class="pr-2">Room ID</a>
+                <%= form.text_field :roomid %>
+            </div>
+        </div>
 
-  <p>
-    <%= form.label :"User ID" %><br>
-    <%= form.text_field :userid %>
-  </p>
+        <div class="d-flex py-3">
+            <div class="mx-2">
+                <a class="pr-2">Date</a>
+                <%= form.date_select :date %>
+            </div>
+        </div>
 
-  <p>
-    <%= form.label :"Room ID" %><br>
-    <%= form.text_field :roomid %>
-  </p>
+        <div class="d-flex pt-3 pb-5">
+            <div class="mx-2">
+                <a class="pr-2">Start Time</a>
+                <%= form.text_field :startTime %>
+            </div>
+            <div class="mx-2">
+                <a class="pr-2">End Time</a>
+                <%= form.text_field :endTime %>
+            </div>
+        </div>
 
-  <p>
-    <%= form.label :Date %><br>
-    <%= form.date_select :date %>
-  </p>
-
-  <p>
-    <%= form.label :"Start Time" %><br>
-    <%= form.text_field :startTime %>
-  </p>
-
-  <p>
-    <%= form.label :"End Time" %><br>
-    <%= form.text_field :endTime %>
-  </p>
-
-  <p>
-    <%= form.label :Status %><br>
-    <%= form.text_field :status %>
-    </p>
-
-  <p>
-    <%= form.submit %>
-  </p>
-<% end %>
+        <div>
+            <%= form.submit %>
+        </div>
+    <% end %>
+</div>

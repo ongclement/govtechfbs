@@ -1,31 +1,42 @@
-
-<h1>Listing Articles</h1>
-<table>
-  <tr>
-    <th>Booking ID</th>
-    <th>User ID</th>
-    <th>Room ID</th>
-    <th>Date</th>
-    <th>Start Time</th>
-    <th>End Time</th>
-    <th>Status</th>
-    <th colspan="3"></th>
-  </tr>
-
-  <% @bookings.each do |booking| %>
-    <tr>
-      <td><%= booking.id %></td>
-      <td><%= booking.userid %></td>
-      <td><%= booking.roomid %></td>
-      <td><%= booking.date %></td>
-      <td><%= booking.startTime %></td>
-      <td><%= booking.endTime %></td>
-      <td><%= booking.status %></td>
-      <td><%= link_to 'Show', booking_path(booking) %></td>
-      <td><%= link_to 'Edit', edit_booking_path(booking) %></td>
-      <td><%= link_to 'Destroy', booking_path(booking),
-                      method: :delete,
-                      data: { confirm: 'Are you sure?' } %></td>
+<div class="d-flex justify-content-between py-3">
+    <div>
+        <h3>All Bookings</h3>
+    </div>
+    <div>
+        <%= link_to new_booking_url, {:class => "navicon-content"} do %>
+            <div class="btn btn-secondary">
+                <i class="fa fa-plus mr-1"></i>New
+            </div>
+        <% end %>
+    </div>
+</div>
+<table class="table table-striped">
+    <thead>
+    <tr class="text-center">
+        <th scope="col">Booking ID</th>
+        <th scope="col">User ID</th>
+        <th scope="col">Room ID</th>
+        <th scope="col">Date</th>
+        <th scope="col">Start Time</th>
+        <th scope="col">End Time</th>
+        <th scope="col">Status</th>
+        <th scope="col"></th>
     </tr>
-  <% end %>
+    </thead>
+    <tbody>
+        <% @bookings.each do |booking| %>
+            <tr class="text-center">
+                <td><%= booking.id %></td>
+                <td><%= booking.userid %></td>
+                <td><%= booking.roomid %></td>
+                <td><%= booking.date.to_date %></td>
+                <td><%= booking.startTime %></td>
+                <td><%= booking.endTime %></td>
+                <td><%= booking.status %></td>
+                <td><%= link_to 'Delete', booking_path(booking),
+                                method: :delete,
+                                data: { confirm: 'Are you sure?' } %></td>
+            </tr>
+        <% end %>
+    </tbody>
 </table>

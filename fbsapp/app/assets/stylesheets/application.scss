@@ -12,3 +12,39 @@
  *
  */
 @import 'bootstrap';
+@import 'font-awesome';
+
+.header {
+    background-color: #1FC8E2;
+    height: 5em;
+    padding: 1em 2em;
+    margin-bottom: 1em;
+    font-family: Helvetica, sans-serif;
+    font-weight: bold;
+}
+
+.navicon {
+    width: 33%;
+    align-self: center;
+    text-align:center;
+    color: black;
+    text-decoration: none;
+    font-family: sans-serif;
+    font-weight: bold;
+}
+
+.navicon :hover {
+    cursor: pointer;
+    text-decoration: none;
+    color: #b7edf4;
+    background: #66D3E4;
+    border-radius: 1em;
+}
+
+.navicon-content {
+    color: black;
+}
+
+body {
+    background: #E5F7F9;
+}

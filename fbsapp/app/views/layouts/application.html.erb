@@ -7,10 +7,50 @@
 
 				<%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
 				<%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-		</head>
+    </head>
 
 		<body>
-				<%= yield %>
-        <div class="test">Test div</div>
+    <div class="header">
+        <div class="row">
+            <div class="col-3">
+                <div class="float-right">
+                    <i class="fa fa-home"></i>
+                    KickAss<br> Booking System
+                </div>
+            </div>
+            <div class="d-flex col-6">
+                <div class="navicon">
+                    <%= link_to root_path, {:class => "navicon-content"} do %>
+                        <div>
+                            <i class="fa fa-home mr-1"></i>Home
+                        </div>
+                    <% end %>
+                </div>
+                <div class="navicon">
+                    <%= link_to bookings_url, {:class => "navicon-content"} do %>
+                        <div>
+                            <i class="fa fa-clipboard mr-1"></i>Bookings
+                        </div>
+                    <% end %>
+                </div>
+                <div class="navicon">
+                    <%= link_to users_url, {:class => "navicon-content"} do %>
+                        <div>
+                            <i class="fa fa-users mr-1"></i>Users
+                        </div>
+                    <% end %>
+                </div>
+            </div>
+            <div class="col-3 align-self-center">
+                <div class="float-left">
+                    <small> Welcome, Admin!</small><br>
+                    <small>Logout</small>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <%= yield %>
+    </div>
 		</body>
 </html>
