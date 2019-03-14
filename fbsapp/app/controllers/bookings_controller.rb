@@ -17,14 +17,14 @@ class BookingsController < ApplicationController
     def create
         @booking = Booking.new(booking_params)
         @booking.save
-        redirect_back(fallback_location: root_path)
+        redirect_to(bookings_url)
     end
 
     def destroy
         @booking = Booking.find(params[:id])
         @booking.destroy
 
-        redirect_back(fallback_location: root_path)
+        redirect_to(bookings_url)
     end
 
     private
