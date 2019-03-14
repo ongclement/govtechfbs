@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_03_13_164153) do
+ActiveRecord::Schema.define(version: 2019_03_14_043617) do
 
   create_table "bookings", options: "ENGINE=MyISAM DEFAULT CHARSET=latin1", force: :cascade do |t|
     t.string "bookingid", limit: 32, null: false

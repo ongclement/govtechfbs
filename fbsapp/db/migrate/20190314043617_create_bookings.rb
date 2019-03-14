@@ -1,4 +1,4 @@
-class Bookings < ActiveRecord::Migration[5.2]
+class CreateBookings < ActiveRecord::Migration[5.2]
   def self.up
     create_table :bookings do |t|
       t.string     :bookingid,    :limit => 32, :null => false
@@ -13,6 +13,6 @@ class Bookings < ActiveRecord::Migration[5.2]
     end
   end
   def self.down
-    drop_table :rooms
+    drop_table :bookings
   end
 end
