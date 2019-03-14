@@ -1,0 +1,27 @@
+<% provide(:title, "Log in") %>
+<div class="py-5">
+    <h2>Log In</h2>
+</div>
+
+<div class="row d-block">
+    <% if flash.each.any? %>
+        <div class="btn btn-danger w-100 my-2">
+            <% flash.each do |message_type, message| %>
+                <div class=" alert-<%= message_type %>"><%= message %></div>
+            <% end %>
+        </div>
+    <% end %>
+
+    <div class="col-md-6 col-md-offset-3">
+        <%= form_for(:session, url: login_path) do |f| %>
+
+            <%= f.label :Username %>
+            <%= f.text_field :username, class: 'form-control' %>
+
+            <%= f.label :password %>
+            <%= f.password_field :password, class: 'form-control' %>
+
+            <%= f.submit "Log in", class: "mt-5 btn btn-primary" %>
+        <% end %>
+    </div>
+</div>

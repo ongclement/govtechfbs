@@ -15,7 +15,7 @@
 @import 'font-awesome';
 
 .header {
-    background-color: #1FC8E2;
+    background-color: #0A090C;
     height: 5em;
     padding: 1em 2em;
     margin-bottom: 1em;
@@ -24,29 +24,28 @@
 }
 
 .navicon {
-    width: 33%;
     align-self: center;
     text-align:center;
-    color: black;
+    color: white;
     text-decoration: none;
     font-family: sans-serif;
     font-weight: bold;
+    margin: 0 1em;
 }
 
 .navicon :hover {
     cursor: pointer;
     text-decoration: none;
-    color: #b7edf4;
-    background: #66D3E4;
+    color: white;
     border-radius: 1em;
 }
 
 .navicon-content {
-    color: black;
+    color: white;
 }
 
 body {
-    background: #E5F7F9;
+    background: #DEE5E7;
 }
 
 .error-message-container {
