@@ -1,0 +1,31 @@
+
+<h1>Listing Articles</h1>
+<table>
+  <tr>
+    <th>Booking ID</th>
+    <th>User ID</th>
+    <th>Room ID</th>
+    <th>Date</th>
+    <th>Start Time</th>
+    <th>End Time</th>
+    <th>Status</th>
+    <th colspan="3"></th>
+  </tr>
+
+  <% @bookings.each do |booking| %>
+    <tr>
+      <td><%= booking.id %></td>
+      <td><%= booking.userid %></td>
+      <td><%= booking.roomid %></td>
+      <td><%= booking.date %></td>
+      <td><%= booking.startTime %></td>
+      <td><%= booking.endTime %></td>
+      <td><%= booking.status %></td>
+      <td><%= link_to 'Show', booking_path(booking) %></td>
+      <td><%= link_to 'Edit', edit_booking_path(booking) %></td>
+      <td><%= link_to 'Destroy', booking_path(booking),
+                      method: :delete,
+                      data: { confirm: 'Are you sure?' } %></td>
+    </tr>
+  <% end %>
+</table>
