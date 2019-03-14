@@ -24,7 +24,7 @@ class UsersController < ApplicationController
             @user.errors.add(:base, "Password field cannot be empty")
         end
 
-        if User.exists?(username: @user.username)
+        if User.exists?(username: @user.username.strip())
             @user.errors.add(:base, "Duplicate username, please enter a new username.")
         end
 
