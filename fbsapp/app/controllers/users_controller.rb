@@ -16,8 +16,24 @@ class UsersController < ApplicationController
 
     def create
         @user= User.new(booking_params)
-        @user.save
-        redirect_to(users_url)
+        if @user.username.empty?
+            @user.errors.add(:base, "Username field cannot be empty")
+        end
+
+        if @user.password.empty?
+            @user.errors.add(:base, "Password field cannot be empty")
+        end
+
+        if User.exists?(username: @user.username)
+            @user.errors.add(:base, "Duplicate username, please enter a new username.")
+        end
+
+        if @user.errors.empty?
+            @user.save
+            redirect_to(users_url)
+        else
+            render 'new'
+        end
     end
 
     def destroy
