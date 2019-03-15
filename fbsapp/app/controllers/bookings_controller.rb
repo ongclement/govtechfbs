@@ -1,6 +1,10 @@
 class BookingsController < ApplicationController
     def index
-        @bookings = Booking.all
+        if session[:username]=="admin"
+            @bookings = Booking.all
+        else
+            @bookings = Booking.where(["userid = ?", session[:user_id]]).first(5)
+        end
     end
 
     def show
@@ -16,6 +20,7 @@ class BookingsController < ApplicationController
 
     def create
         @booking = Booking.new(booking_params)
+        @booking.status = "Confirmed"
         @booking.save
         redirect_to(bookings_url)
     end
