@@ -9,7 +9,7 @@
 
 <div class="d-flex justify-content-between pt-3">
     <div>
-        <h3>All Rooms</h3>
+        <h3 class="text-uppercase font-weight-bolder">All Rooms</h3>
     </div>
     <div>
         <%= link_to new_room_url, {:class => "navicon-content"} do %>
@@ -46,7 +46,7 @@
                 <% end %>
 
                 <td class="align-middle" style="width:35%"><%= room.description %></td>
-                <td class="align-middle text-center"><%= link_to 'Delete', room_path(room),
+                <td class="align-middle"><%= link_to 'Delete', room_path(room),
                                 method: :delete,
                                 data: { confirm: 'Are you sure?' } %></td>
             </tr>
