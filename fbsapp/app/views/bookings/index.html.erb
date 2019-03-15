@@ -24,7 +24,7 @@
     </tr>
     </thead>
     <tbody>
-    <% if !@bookings %>
+    <% if !@bookings or @bookings.empty? %>
         <tr>
             <td colspan="8" class="text-center">
                 No current bookings.
