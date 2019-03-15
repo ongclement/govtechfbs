@@ -43,13 +43,6 @@
                     </div>
                 <% elsif session[:user_id] %>
                     <div class="navicon">
-                        <%= link_to welcome_index_url, {:class => "navicon-content"} do %>
-                            <div>
-                                <i class="fa fa-home mr-1"></i>Home
-                            </div>
-                        <% end %>
-                    </div>
-                    <div class="navicon">
                         <%= link_to bookings_url, {:class => "navicon-content"} do %>
                             <div>
                                 <i class="fa fa-tasks mr-1"></i>Manage Booking

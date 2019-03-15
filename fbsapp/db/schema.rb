@@ -13,9 +13,8 @@
 ActiveRecord::Schema.define(version: 2019_03_14_043617) do
 
   create_table "bookings", options: "ENGINE=MyISAM DEFAULT CHARSET=latin1", force: :cascade do |t|
-    t.string "bookingid", limit: 32, null: false
-    t.string "userid", limit: 32, null: false
-    t.string "roomid", limit: 32, null: false
+    t.string "username", limit: 32, null: false
+    t.string "roomname", limit: 32, null: false
     t.timestamp "date"
     t.string "startTime", limit: 4
     t.string "endTime", limit: 4
@@ -24,14 +23,12 @@ ActiveRecord::Schema.define(version: 2019_03_14_043617) do
   end
 
   create_table "rooms", options: "ENGINE=MyISAM DEFAULT CHARSET=latin1", force: :cascade do |t|
-    t.string "roomid", limit: 32, null: false
     t.string "name", limit: 32, null: false
     t.text "description"
     t.timestamp "created_at"
   end
 
   create_table "users", options: "ENGINE=MyISAM DEFAULT CHARSET=latin1", force: :cascade do |t|
-    t.string "userid", limit: 32, null: false
     t.string "username", limit: 32, null: false
     t.string "password", limit: 32, null: false
     t.timestamp "created_at"

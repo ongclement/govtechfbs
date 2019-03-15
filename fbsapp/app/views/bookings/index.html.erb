@@ -1,3 +1,8 @@
+<%
+    if !session[:username]
+        controller.redirect_to root_url
+    end
+%>
 <div class="d-flex justify-content-between py-3">
     <div>
         <h3>All Bookings</h3>
@@ -12,10 +17,13 @@
 </div>
 <table class="table table-striped">
     <thead>
+    <tr class="text-center text-bold text-upper bg-success"><th colspan="8">Upcoming</th></tr>
     <tr class="text-center">
-        <th scope="col">Booking ID</th>
-        <th scope="col">User ID</th>
-        <th scope="col">Room ID</th>
+        <% if session[:username]=="admin" %>
+            <th scope="col">Booking ID</th>
+            <th scope="col">User</th>
+        <% end %>
+        <th scope="col">Room</th>
         <th scope="col">Date</th>
         <th scope="col">Start Time</th>
         <th scope="col">End Time</th>
@@ -24,18 +32,20 @@
     </tr>
     </thead>
     <tbody>
-    <% if !@bookings or @bookings.empty? %>
+    <% if !@bookings or @bookings.where(["date >= ?", DateTime.now]).empty? %>
         <tr>
             <td colspan="8" class="text-center">
                 No current bookings.
             </td>
         </tr>
     <% else %>
-        <% @bookings.each do |booking| %>
+        <% @bookings.where(["date >= ?", DateTime.now]).each do |booking| %>
             <tr class="text-center">
-                <td><%= booking.id %></td>
-                <td><%= booking.userid %></td>
-                <td><%= booking.roomid %></td>
+                <% if session[:username]=="admin" %>
+                    <td><%= booking.id %></td>
+                    <td><%= booking.username %></td>
+                <% end %>
+                <td><%= booking.roomname %></td>
                 <td><%= booking.date.to_date %></td>
                 <td><%= booking.startTime %></td>
                 <td><%= booking.endTime %></td>
@@ -43,6 +53,48 @@
                 <td><%= link_to 'Delete', booking_path(booking),
                                 method: :delete,
                                 data: { confirm: 'Are you sure?' } %></td>
+            </tr>
+        <% end %>
+    <% end %>
+    </tbody>
+</table>
+
+<table class="table table-striped mt-4">
+    <thead>
+    <tr class="text-center text-bold text-upper bg-danger"><th colspan="8">Past Bookings</th></tr>
+    <tr class="text-center">
+        <% if session[:username]=="admin" %>
+            <th scope="col">Booking ID</th>
+            <th scope="col">User</th>
+        <% end %>
+        <th scope="col">Room</th>
+        <th scope="col">Date</th>
+        <th scope="col">Start Time</th>
+        <th scope="col">End Time</th>
+        <th scope="col">Status</th>
+        <th scope="col"></th>
+    </tr>
+    </thead>
+    <tbody>
+    <% if !@bookings or @bookings.where(["date < ?", DateTime.now]).empty? %>
+        <tr>
+            <td colspan="8" class="text-center">
+                No current bookings.
+            </td>
+        </tr>
+    <% else %>
+        <% @bookings.where(["date < ?", DateTime.now]).each do |booking| %>
+            <tr class="text-center">
+                <% if session[:username]=="admin" %>
+                    <td><%= booking.id %></td>
+                    <td><%= booking.username %></td>
+                <% end %>
+                <td><%= booking.roomname %></td>
+                <td><%= booking.date.to_date %></td>
+                <td><%= booking.startTime %></td>
+                <td><%= booking.endTime %></td>
+                <td><%= booking.status %></td>
+                <td></td>
             </tr>
         <% end %>
     <% end %>

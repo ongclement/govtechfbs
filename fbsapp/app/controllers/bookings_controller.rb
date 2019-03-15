@@ -3,7 +3,7 @@ class BookingsController < ApplicationController
         if session[:username]=="admin"
             @bookings = Booking.all
         else
-            @bookings = Booking.where(["userid = ?", session[:user_id]])
+            @bookings = Booking.where(["username = ?", session[:username]])
         end
     end
 
@@ -23,15 +23,18 @@ class BookingsController < ApplicationController
         @bookings = Booking.where(["date = ?", @booking.date])
         overlap = false
         @bookings.each do |bk|
-            if (bk.startTime...bk.endTime).overlaps?(@booking.startTime...@booking.endTime) and bk.roomid==@booking.roomid
+            if (bk.startTime...bk.endTime).overlaps?(@booking.startTime...@booking.endTime) and bk.roomname==@booking.roomname
                 overlap = true
             end
         end
-        if overlap
+        if @booking.date<DateTime.now
+            flash.now.alert = "Please select a future date."
+            render 'new'
+        elsif overlap
             flash.now.alert  = 'Booking timing overlaps with current booking, please select a new timeslot'
             render 'new'
         else
-            @booking.userid = session[:user_id]
+            @booking.username = session[:username]
             @booking.status = "Confirmed"
             @booking.save
             redirect_to(bookings_url)
@@ -47,6 +50,6 @@ class BookingsController < ApplicationController
 
     private
     def booking_params
-        params.require(:booking).permit(:id, :userid, :roomid, :date, :startTime, :endTime, :status)
+        params.require(:booking).permit(:id, :username, :roomname, :date, :startTime, :endTime, :status)
     end
 end

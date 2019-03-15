@@ -10,7 +10,11 @@ class SessionsController < ApplicationController
         user = User.find_by(username: params[:session][:username].downcase)
         if user && user.password==params[:session][:password]
             log_in user
-            redirect_to(welcome_index_url)
+            if user.username=="admin"
+                redirect_to(welcome_index_url)
+            else
+                redirect_to bookings_url
+            end
         else
             if params[:session][:username].empty? or params[:session][:password].empty?
                 flash.now.alert  = 'Username/password cannot be empty'
