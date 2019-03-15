@@ -35,7 +35,7 @@
     <% if !@bookings or @bookings.where(["date >= ?", DateTime.now]).empty? %>
         <tr>
             <td colspan="8" class="text-center">
-                No current bookings.
+                No Current Bookings.
             </td>
         </tr>
     <% else %>
@@ -79,7 +79,7 @@
     <% if !@bookings or @bookings.where(["date < ?", DateTime.now]).empty? %>
         <tr>
             <td colspan="8" class="text-center">
-                No current bookings.
+                No Past Bookings.
             </td>
         </tr>
     <% else %>
@@ -94,6 +94,11 @@
                 <td><%= booking.startTime %></td>
                 <td><%= booking.endTime %></td>
                 <td><%= booking.status %></td>
+                <% if session[:username]=="admin" %>
+                    <td><%= link_to 'Delete', booking_path(booking),
+                                    method: :delete,
+                                    data: { confirm: 'Booking is a past record. Are you sure you want to delete?' } %></td>
+                <% end %>
                 <td></td>
             </tr>
         <% end %>

@@ -1,0 +1,55 @@
+<%
+    if !session[:username]
+        controller.redirect_to root_url
+    elsif session[:username]!="admin"
+        controller.redirect_to bookings_url
+    end
+%>
+
+
+<div class="d-flex justify-content-between pt-3">
+    <div>
+        <h3>All Rooms</h3>
+    </div>
+    <div>
+        <%= link_to new_room_url, {:class => "navicon-content"} do %>
+            <div class="btn btn-secondary">
+                <i class="fa fa-plus mr-1"></i>New
+            </div>
+        <% end %>
+    </div>
+</div>
+<hr>
+<div>
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th scope="col" class="align-middle text-center" style="width: 10%">ID</th>
+            <th scope="col" class="align-middle text-center" style="width: 10%">Name</th>
+            <th scope="col" class="align-middle text-center" style="width: 70%" colspan="2" class="text-center">Description</th>
+            <th scope="col" class="align-middle text-center" style="width: 5%"></th>
+        </tr>
+        </thead>
+
+        <% @rooms.each do |room| %>
+            <tr>
+                <td scope="row" class="align-middle text-center"><%= room.id %></td>
+                <td class="align-middle text-center"><%= room.name %>
+
+                <% if File.file?"#{Rails.public_path}/images/rooms_"+room.id.to_s+".jpg" %>
+                    <td class="align-middle text-center" style="width:25%">
+                        <%= image_tag ("/images/rooms_"+room.id.to_s+".jpg"), style:"width: 280px", class: "img-responsive" %>
+<!--                        <a class="small text-center">Change Image</a>-->
+                    </td>
+                <% else %>
+                    <td class="align-middle text-center">No Image Available</td>
+                <% end %>
+
+                <td class="align-middle" style="width:35%"><%= room.description %></td>
+                <td class="align-middle text-center"><%= link_to 'Delete', room_path(room),
+                                method: :delete,
+                                data: { confirm: 'Are you sure?' } %></td>
+            </tr>
+        <% end %>
+    </table>
+</div>

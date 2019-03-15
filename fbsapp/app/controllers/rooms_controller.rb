@@ -1,50 +1,43 @@
 class RoomsController < ApplicationController
     def index
-        @users = User.all
+        @rooms = Room.all
     end
 
     def show
-        @user= User.find(params[:id])
+        @room= Room.find(params[:id])
     end
 
     def new
-        @user= User.new
+        @room= Room.new
     end
     def edit
-        @user= User.find(params[:id])
+        @room= Room.find(params[:id])
     end
 
     def create
-        @user= User.new(booking_params)
-        if @user.username.empty?
-            @user.errors.add(:base, "Username field cannot be empty")
+        @room= Room.new(booking_params)
+
+        if Room.exists?(name: @room.name.strip())
+            @room.errors.add(:base, "Duplicate room name, please enter a new name.")
         end
 
-        if @user.password.empty?
-            @user.errors.add(:base, "Password field cannot be empty")
-        end
-
-        if User.exists?(username: @user.username.strip())
-            @user.errors.add(:base, "Duplicate username, please enter a new username.")
-        end
-
-        if @user.errors.empty?
-            @user.save
-            redirect_to(users_url)
+        if @room.errors.empty?
+            @room.save
+            redirect_to(rooms_url)
         else
             render 'new'
         end
     end
 
     def destroy
-        @user= User.find(params[:id])
-        @user.destroy
+        @room= Room.find(params[:id])
+        @room.destroy
 
-        redirect_to(users_url)
+        redirect_to(rooms_url)
     end
 
     private
     def booking_params
-        params.require(:user).permit(:id, :username, :password)
+        params.require(:room).permit(:id, :name, :description)
     end
 end
