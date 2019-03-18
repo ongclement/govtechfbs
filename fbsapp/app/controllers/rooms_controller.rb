@@ -28,12 +28,14 @@ class RoomsController < ApplicationController
         redirect_to(rooms_url)
     end
 
-    def save_details
+    def save_room_details
         @room= Room.find(params[:id])
-        @room.name = params[:name]
-        @room.description = params[:desc]
+        if @room
+            @room.name = params[:name]
+            @room.description = params[:desc]
 
-        @room.save
+            @room.save
+        end
         redirect_to rooms_url
     end
 

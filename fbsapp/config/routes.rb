@@ -6,12 +6,18 @@ Rails.application.routes.draw do
     delete  '/logout',  to: 'sessions#destroy'
 
     get     '/bookings/editstatus/:id/:status',  to: 'bookings#editStatus'
-    get     '/rooms/save_details/:id/:name/:desc' => 'rooms#save_details', :as => 'save_details'
 
-    resources :users
-    resources :rooms do
-        get 'save_details', on: :collection
+    get     '/rooms/save_room_details/:id/:name/:desc' => 'rooms#save_room_details', :as => 'save_room_details'
+    get     '/users/save_user_details/:id/:password' => 'users#save_user_details', :as => 'save_user_details'
+
+    resources :users do
+        get 'save_user_details', on: :collection
     end
+
+    resources :rooms do
+        get 'save_room_details', on: :collection
+    end
+
     resources :bookings
 
     root 'sessions#new'

@@ -43,6 +43,17 @@ class UsersController < ApplicationController
         redirect_to(users_url)
     end
 
+    def save_user_details
+        @user= User.find(params[:id])
+        if @user && !User.exists?(username: params[:username].strip())
+            @user.username = params[:username]
+            @user.password = params[:password]
+
+            @user.save
+        end
+        redirect_to users_url
+    end
+
     private
     def booking_params
         params.require(:user).permit(:id, :username, :password)

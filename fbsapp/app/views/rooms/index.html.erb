@@ -20,7 +20,7 @@
 </div>
 <hr>
 <div>
-    <table id="rooms-data" class="table table-striped">
+    <table id="rooms-data" class="table table-striped mb-5">
         <thead>
         <tr>
             <th scope="col" class="align-middle text-center" style="width: 10%">ID</th>
@@ -43,10 +43,16 @@
                         <% elsif File.file?"#{Rails.public_path}/images/rooms_"+room.id.to_s+".jpeg" %>
                             <%= image_tag ("/images/rooms_"+room.id.to_s+".jpeg"), style:"width: 280px", class: "img-responsive" %>
                         <% end %>
-<!--                        <a class="small text-center">Change Image</a>-->
+                        <div class="change-image mt-1">
+                            <i class="fa fa-upload"></i><a class="small text-center"> Change Image</a>
+                        </div>
                     </td>
                 <% else %>
-                    <td class="align-middle text-center">No Image Available</td>
+                    <td class="align-middle text-center">
+                        <div class="change-image mt-1">
+                            <i class="fa fa-upload"></i><a class="small text-center"> Add an Image</a>
+                        </div>
+                    </td>
                 <% end %>
 
                 <td class="align-middle" style="width:35%"><%= room.description %></td>
@@ -65,10 +71,10 @@
 </div>
 
 <div class="grey-screen"></div>
-<div class="edit-room-popup">
+<div id="edit-room-popup" class="edit-popup">
     <div id="edit-rooms-close" class="float-right close-button"><i class="fa fa-times"></i></div>
     <div class="p-4">
-        <form action="/rooms/save_details" method="get">
+        <form action="/rooms/save_room_details" method="get">
             <input type="hidden" id="edit-room-id" name="id"><br>
             Room Name:  <input type="text" id="edit-room-name" name="name" class="mb-2"><br>
             Description:<textarea id='edit-room-desc' name="desc" style='width: 90%; height: 8em; resize: none; float: bottom'></textarea>
