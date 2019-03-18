@@ -58,7 +58,8 @@
                     <td class="align-middle text-center"><%= booking.date.to_date %></td>
                     <td class="align-middle text-center"><%= booking.startTime %></td>
                     <td class="align-middle text-center"><%= booking.endTime %></td>
-                    <td class="align-middle text-center text-capitalized">
+                    <% if session[:username]=="admin" %>
+                        <td class="align-middle text-center text-capitalized">
                         <div class="dropdown">
                             <button class="btn btn-secondary dropdown-toggle text-capitalize" style="width: 8em;" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <% if booking.status.downcase == 'confirmed' or booking.status.downcase == 'rejected' or booking.status.downcase == 'pending' %>
@@ -78,6 +79,9 @@
                             </div>
                         </div>
                     </td>
+                    <% else %>
+                        <td><%= booking.status %></td>
+                    <% end %>
                     <td class="align-middle text-center">
                         <%= link_to 'Delete', booking_path(booking),
                             method: :delete,
@@ -105,7 +109,9 @@
             <th scope="col">Start Time</th>
             <th scope="col">End Time</th>
             <th scope="col">Status</th>
-            <th scope="col"></th>
+            <% if session[:username]=="admin" %>
+                <th scope="col"></th>
+            <% end %>
         </tr>
         </thead>
         <tbody>
@@ -126,27 +132,27 @@
                     <td class="align-middle text-center"><%= booking.date.to_date %></td>
                     <td class="align-middle text-center"><%= booking.startTime %></td>
                     <td class="align-middle text-center"><%= booking.endTime %></td>
-                    <td>
-                        <div class="dropdown">
-                            <button class="btn btn-secondary dropdown-toggle text-capitalize" style="width: 8em;" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <% if booking.status.downcase == 'confirmed' or booking.status.downcase == 'rejected' or booking.status.downcase == 'pending' %>
-                                    <%= booking.status %>
-                                <% end %>
-                            </button>
-                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                <% if booking.status.downcase != 'confirmed' %>
-                                    <a class="dropdown-item text-capitalize" href="bookings/editstatus/<%= booking.id %>/Confirmed">Confirmed</a>
-                                <% end %>
-                                <% if booking.status.downcase != 'pending' %>
-                                    <a class="dropdown-item text-capitalize" href="bookings/editstatus/<%= booking.id %>/Pending">Pending</a>
-                                <% end %>
-                                <% if booking.status.downcase != 'rejected' %>
-                                    <a class="dropdown-item text-capitalize" href="bookings/editstatus/<%= booking.id %>/Rejected">Rejected</a>
-                                <% end %>
-                            </div>
-                        </div>
-                    </td>
                     <% if session[:username]=="admin" %>
+                        <td>
+                            <div class="dropdown">
+                                <button class="btn btn-secondary dropdown-toggle text-capitalize" style="width: 8em;" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <% if booking.status.downcase == 'confirmed' or booking.status.downcase == 'rejected' or booking.status.downcase == 'pending' %>
+                                        <%= booking.status %>
+                                    <% end %>
+                                </button>
+                                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                    <% if booking.status.downcase != 'confirmed' %>
+                                        <a class="dropdown-item text-capitalize" href="bookings/editstatus/<%= booking.id %>/Confirmed">Confirmed</a>
+                                    <% end %>
+                                    <% if booking.status.downcase != 'pending' %>
+                                        <a class="dropdown-item text-capitalize" href="bookings/editstatus/<%= booking.id %>/Pending">Pending</a>
+                                    <% end %>
+                                    <% if booking.status.downcase != 'rejected' %>
+                                        <a class="dropdown-item text-capitalize" href="bookings/editstatus/<%= booking.id %>/Rejected">Rejected</a>
+                                    <% end %>
+                                </div>
+                            </div>
+                        </td>
                         <td>
                             <%= link_to 'Delete', booking_path(booking),
                                         method: :delete,
@@ -154,6 +160,10 @@
                                         class: 'btn btn-danger',
                                         style: 'width: 4.5em'
                             %>
+                        </td>
+                    <% else %>
+                        <td>
+                            <%= booking.status %>
                         </td>
                     <% end %>
                 </tr>
