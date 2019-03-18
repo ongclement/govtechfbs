@@ -9,6 +9,8 @@ class BookingsController < ApplicationController
 
     def show
         @booking = Booking.find(params[:id])
+        @booking.save
+        redirect_to(bookings_url)
     end
 
     def new
@@ -16,6 +18,17 @@ class BookingsController < ApplicationController
     end
     def edit
         @booking = Booking.find(params[:id])
+    end
+
+    def editStatus
+        @booking = Booking.find(params[:id])
+        @booking.status = params[:status]
+        if (@booking.status.downcase=='confirmed' or @booking.status.downcase=='rejected' or @booking.status.downcase=='pending')
+            @booking.save
+        else
+            flash.now.alert = 'Invalid status, unable to be saved'
+        end
+        redirect_to(bookings_url)
     end
 
     def create

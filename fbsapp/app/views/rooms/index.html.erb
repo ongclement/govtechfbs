@@ -6,7 +6,6 @@
     end
 %>
 
-
 <div class="d-flex justify-content-between pt-3">
     <div>
         <h3 class="text-uppercase font-weight-bolder">All Rooms</h3>
@@ -21,7 +20,7 @@
 </div>
 <hr>
 <div>
-    <table class="table table-striped">
+    <table id="rooms-data" class="table table-striped">
         <thead>
         <tr>
             <th scope="col" class="align-middle text-center" style="width: 10%">ID</th>
@@ -30,15 +29,20 @@
             <th scope="col" class="align-middle text-center" style="width: 5%"></th>
         </tr>
         </thead>
-
         <% @rooms.each do |room| %>
             <tr>
                 <td scope="row" class="align-middle text-center"><%= room.id %></td>
                 <td class="align-middle text-center"><%= room.name %>
 
-                <% if File.file?"#{Rails.public_path}/images/rooms_"+room.id.to_s+".jpg" %>
+                <% if File.file?"#{Rails.public_path}/images/rooms_"+room.id.to_s+".jpg" or File.file?"#{Rails.public_path}/images/rooms_"+room.id.to_s+".jpeg" or File.file?"#{Rails.public_path}/images/rooms_"+room.id.to_s+".png" %>
                     <td class="align-middle text-center" style="width:25%">
-                        <%= image_tag ("/images/rooms_"+room.id.to_s+".jpg"), style:"width: 280px", class: "img-responsive" %>
+                        <% if File.file?"#{Rails.public_path}/images/rooms_"+room.id.to_s+".jpg" %>
+                            <%= image_tag ("/images/rooms_"+room.id.to_s+".jpg"), style:"width: 280px", class: "img-responsive" %>
+                        <% elsif File.file?"#{Rails.public_path}/images/rooms_"+room.id.to_s+".png" %>
+                            <%= image_tag ("/images/rooms_"+room.id.to_s+".png"), style:"width: 280px", class: "img-responsive" %>
+                        <% elsif File.file?"#{Rails.public_path}/images/rooms_"+room.id.to_s+".jpeg" %>
+                            <%= image_tag ("/images/rooms_"+room.id.to_s+".jpeg"), style:"width: 280px", class: "img-responsive" %>
+                        <% end %>
 <!--                        <a class="small text-center">Change Image</a>-->
                     </td>
                 <% else %>
@@ -46,10 +50,29 @@
                 <% end %>
 
                 <td class="align-middle" style="width:35%"><%= room.description %></td>
-                <td class="align-middle"><%= link_to 'Delete', room_path(room),
+                <td class="align-middle">
+                    <button id="edit-room" class="btn btn-primary mb-1 edit-rooms" data-id="<%= room.id %>" data-name="<%= room.name %>" data-description="<%= room.description %>" style="width: 4.5em;">Edit</button>
+                    <%= link_to 'Delete', room_path(room),
                                 method: :delete,
-                                data: { confirm: 'Are you sure?' } %></td>
+                                data: { confirm: 'Are you sure?' },
+                                class: 'btn btn-danger',
+                                style: 'width: 4.5em'
+                    %>
+                </td>
             </tr>
         <% end %>
     </table>
+</div>
+
+<div class="grey-screen"></div>
+<div class="edit-room-popup">
+    <div id="edit-rooms-close" class="float-right close-button"><i class="fa fa-times"></i></div>
+    <div class="p-4">
+        <form action="/rooms/save_details" method="get">
+            <input type="hidden" id="edit-room-id" name="id"><br>
+            Room Name:  <input type="text" id="edit-room-name" name="name" class="mb-2"><br>
+            Description:<textarea id='edit-room-desc' name="desc" style='width: 90%; height: 8em; resize: none; float: bottom'></textarea>
+            <button id="edit-room-save" type="submit" class="btn btn-primary mt-4 float-right">Save</button>
+        </form>
+    </div>
 </div>
