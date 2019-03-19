@@ -10,12 +10,15 @@ Rails.application.routes.draw do
     get     '/rooms/save_room_details/:id/:name/:desc' => 'rooms#save_room_details', :as => 'save_room_details'
     get     '/users/save_user_details/:id/:password' => 'users#save_user_details', :as => 'save_user_details'
 
+    post     '/rooms/change_image/:image' => 'rooms#change_image', :as => 'change_image'
+
     resources :users do
         get 'save_user_details', on: :collection
     end
 
     resources :rooms do
         get 'save_room_details', on: :collection
+        post 'change_image', on: :collection
     end
 
     resources :bookings

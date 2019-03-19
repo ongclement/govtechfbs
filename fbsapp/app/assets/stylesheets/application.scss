@@ -79,6 +79,19 @@ body {
     margin: 5em auto;
 }
 
+.change-image-popup {
+    display: none;
+    position: fixed;
+    top: 0; bottom: 0; left: 0; right: 0;
+    background-color: #DEE5E7;
+    height: 22%;
+    width: 30%;
+    z-index: 10000;
+    border-radius: 10px;
+    padding: 1em;
+    margin: 5em auto;
+}
+
 .close-button :hover {
     cursor: pointer;
 }

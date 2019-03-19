@@ -52,4 +52,17 @@ document.addEventListener("turbolinks:load", function() {
         $('.grey-screen').hide();
     });
 
+    $('#rooms-data').on('click', '.change-image', function() {
+        const id = $(this).data('id');
+        $('#change-image-id').val(id);
+
+        $('#change-image-popup').show();
+        $('.grey-screen').show();
+    })
+
+    $('#change-image-close').click(function() {
+        $('#change-image-file').val('');
+        $('#change-image-popup').hide();
+        $('.grey-screen').hide();
+    });
 });

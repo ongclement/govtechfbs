@@ -43,13 +43,13 @@
                         <% elsif File.file?"#{Rails.public_path}/images/rooms_"+room.id.to_s+".jpeg" %>
                             <%= image_tag ("/images/rooms_"+room.id.to_s+".jpeg"), style:"width: 280px", class: "img-responsive" %>
                         <% end %>
-                        <div class="change-image mt-1">
+                        <div class="change-image mt-1" data-id="<%= room.id %>">
                             <i class="fa fa-upload"></i><a class="small text-center"> Change Image</a>
                         </div>
                     </td>
                 <% else %>
                     <td class="align-middle text-center">
-                        <div class="change-image mt-1">
+                        <div class="change-image mt-1" data-id="<%= room.id %>">
                             <i class="fa fa-upload"></i><a class="small text-center"> Add an Image</a>
                         </div>
                     </td>
@@ -79,6 +79,17 @@
             Room Name:  <input type="text" id="edit-room-name" name="name" class="mb-2"><br>
             Description:<textarea id='edit-room-desc' name="desc" style='width: 90%; height: 8em; resize: none; float: bottom'></textarea>
             <button id="edit-room-save" type="submit" class="btn btn-primary mt-4 float-right">Save</button>
+        </form>
+    </div>
+</div>
+
+<div id="change-image-popup" class="change-image-popup">
+    <div id="change-image-close" class="float-right close-button"><i class="fa fa-times"></i></div>
+    <div class="p-4 mx-5">
+        <form action="/rooms/change_image" enctype="multipart/form-data" accept-charset="UTF-8" method="post">
+            <input type="hidden" id="change-image-id" name="id"><br>
+            <input type="file" id="change-image-file" name="room_image">
+            <button type="submit" class="btn btn-primary mt-4 float-right mr-5 pt-1">Save</button>
         </form>
     </div>
 </div>
