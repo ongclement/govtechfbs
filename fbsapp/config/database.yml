@@ -50,5 +50,4 @@ test:
 production:
   <<: *default
   database: fbsapp_production
-  username: fbsapp
-  password: <%= ENV['FBSAPP_DATABASE_PASSWORD'] %>
+  url: mysql2://bc1ad77163f064:005b32a1@us-cdbr-iron-east-03.cleardb.net/heroku_7c3486b141063fa?reconnect=true
