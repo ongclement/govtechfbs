@@ -2,33 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="4cf9a0df-11ad-4ffd-ae06-3cee8c42c1f2" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/app/assets/javascripts/main.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/views/rooms/new.html.erb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/images/rooms_1.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/images/rooms_2.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/images/rooms_3.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/images/rooms_4.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/images/rooms_5.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/fbsapp.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/fbsapp.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Gemfile.lock" beforeDir="false" afterPath="$PROJECT_DIR$/Gemfile.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/assets/stylesheets/application.scss" beforeDir="false" afterPath="$PROJECT_DIR$/app/assets/stylesheets/application.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/controllers/bookings_controller.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/bookings_controller.rb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/controllers/rooms_controller.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/rooms_controller.rb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/controllers/sessions_controller.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/sessions_controller.rb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/controllers/users_controller.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/users_controller.rb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/views/bookings/index.html.erb" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/bookings/index.html.erb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/views/bookings/new.html.erb" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/bookings/new.html.erb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/views/layouts/application.html.erb" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/layouts/application.html.erb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/views/users/index.html.erb" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/users/index.html.erb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/views/users/new.html.erb" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/users/new.html.erb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/views/welcome/index.html.erb" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/welcome/index.html.erb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/config/database.yml" beforeDir="false" afterPath="$PROJECT_DIR$/config/database.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/routes.rb" beforeDir="false" afterPath="$PROJECT_DIR$/config/routes.rb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/db/migrate/20190314042524_create_users.rb" beforeDir="false" afterPath="$PROJECT_DIR$/db/migrate/20190314042524_create_users.rb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/db/migrate/20190314043519_create_rooms.rb" beforeDir="false" afterPath="$PROJECT_DIR$/db/migrate/20190314043519_create_rooms.rb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/db/migrate/20190314043617_create_bookings.rb" beforeDir="false" afterPath="$PROJECT_DIR$/db/migrate/20190314043617_create_bookings.rb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/db/schema.rb" beforeDir="false" afterPath="$PROJECT_DIR$/db/schema.rb" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.bundle/" />
     <ignored path="$PROJECT_DIR$/components/" />
@@ -62,8 +37,26 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/config/database.yml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="642">
-              <caret line="44" column="47" selection-start-line="44" selection-start-column="2" selection-end-line="44" selection-end-column="47" />
+            <state relative-caret-position="557">
+              <caret line="38" column="1" lean-forward="true" selection-start-line="38" selection-start-column="1" selection-end-line="38" selection-end-column="1" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/config/puma.rb">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="102">
+              <caret line="6" column="18" selection-start-line="6" selection-start-column="18" selection-end-line="6" selection-end-column="18" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$APPLICATION_HOME_DIR$/rubystubs25/env.rb">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="506">
+              <caret line="304" column="42" lean-forward="true" selection-start-line="304" selection-start-column="42" selection-end-line="304" selection-end-column="42" />
             </state>
           </provider>
         </entry>
@@ -370,11 +363,10 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="138050000" />
+    <option name="totallyTimeSpent" value="138319000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" weight="0.12291667" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
@@ -682,8 +674,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/config/database.yml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="642">
-          <caret line="44" column="47" selection-start-line="44" selection-start-column="2" selection-end-line="44" selection-end-column="47" />
+        <state relative-caret-position="557">
+          <caret line="38" column="1" lean-forward="true" selection-start-line="38" selection-start-column="1" selection-end-line="38" selection-end-column="1" />
         </state>
       </provider>
     </entry>

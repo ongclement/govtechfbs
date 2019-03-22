@@ -50,4 +50,4 @@ test:
 production:
   <<: *default
   database: fbsapp_production
-  url: mysql2://bc1ad77163f064:005b32a1@us-cdbr-iron-east-03.cleardb.net/heroku_7c3486b141063fa?reconnect=true
+  url: mysql2://bca774f3f69e61:7cc5bf9f@us-cdbr-iron-east-03.cleardb.net/heroku_802c92a4cbc641c?reconnect=true
