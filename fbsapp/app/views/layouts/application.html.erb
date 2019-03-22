@@ -21,13 +21,6 @@
             <div class="d-flex col-6 text-uppercase justify-content-end">
                 <% if session[:username]=="admin" %>
                     <div class="navicon">
-                        <%= link_to welcome_index_url, {:class => "navicon-content"} do %>
-                            <div>
-                                <i class="fa fa-home mr-1"></i>Home
-                            </div>
-                        <% end %>
-                    </div>
-                    <div class="navicon">
                         <%= link_to rooms_url, {:class => "navicon-content"} do %>
                             <div>
                                 <i class="fa fa-building mr-1"></i>Rooms
