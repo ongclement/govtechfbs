@@ -35,18 +35,10 @@ class BookingsController < ApplicationController
 
     def create
         @booking = Booking.new(booking_params)
-        @bookings = Booking.where(["date = ?", @booking.date])
-        overlap = false
-        @bookings.each do |bk|
-            if (bk.startTime...bk.endTime).overlaps?(@booking.startTime...@booking.endTime) and bk.roomname==@booking.roomname
-                overlap = true
-            end
-        end
-        if @booking.date<DateTime.now
-            flash.now.alert = "Please select a future date."
-            render 'new'
-        elsif overlap
-            flash.now.alert  = 'Booking timing overlaps with current booking, please select a new timeslot'
+        @bookings = Booking.where(["status = ?", "Confirmed"])
+        @rooms = Room.all
+        if @booking.roomname.empty?
+            flash.now.alert  = 'Please try again and ensure the time slot has been selected.'
             render 'new'
         else
             @booking.username = session[:username]

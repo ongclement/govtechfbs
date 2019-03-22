@@ -86,9 +86,11 @@ document.addEventListener("turbolinks:load", function() {
                 if (bDate.getFullYear()==date.getFullYear() && bDate.getMonth()==date.getMonth() && bDate.getDate()==date.getDate()) {
                     const room = rooms.filter(obj => {
                         return obj.name === b.roomname
-                    })
-                    b.roomID = room[0].id;
-                    allToday.push(b);
+                    });
+                    if (room.length>0) {
+                        b.roomID = room[0].id;
+                        allToday.push(b);
+                    }
                 }
             }
             for (let a=0; a<allToday.length; a++) {
@@ -190,4 +192,17 @@ document.addEventListener("turbolinks:load", function() {
         }
     });
 
+    $('.room-row').hover(function() {
+        const id = $(this).closest('tr').attr('id').split('_')[1];
+        $('#room-desc-popup-'+id).show();
+        $('#room-desc-popup-'+id).css({
+            display: "block",
+            position: "absolute",
+            left: ($(this).offset().left + $(this).width()) + "px",
+            top: $(this).offset().top + "px"
+        });
+    }, function() {
+        const id = $(this).closest('tr').attr('id').split('_')[1];
+        $('#room-desc-popup-'+id).hide();
+    });
 });
