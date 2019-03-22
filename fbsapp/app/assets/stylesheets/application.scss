@@ -99,3 +99,22 @@ body {
 .change-image :hover {
     cursor: pointer;
 }
+
+#room-table-header {
+    margin-bottom: 0;
+}
+
+#room-table-header thead tr td {
+    border-right: 1px solid white;
+}
+
+#room-table-body tbody tr td {
+    border-right: 1px solid white;
+    padding: 0.75em 0.2em;
+    text-align: center;
+}
+
+#room-table-body tbody tr .unselected-cell:hover {
+    background-color: #28a745;
+    cursor: pointer;
+}

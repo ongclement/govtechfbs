@@ -9,35 +9,63 @@
     </div>
 <% end %>
 
-<div>
+<div class="mb-5">
+    <span id="bookings-all" type="hidden" data-bookings= "<%= @bookings.to_json %>" />
+    <span id="rooms-all" type="hidden" data-rooms="<%= @rooms.to_json %>" />
     <%= form_with scope: :booking, url: bookings_path, local: true do |form| %>
-        <div class="d-flex my-3">
+        <div id="new-booking-1" class="p-5">
+            <div class="mb-5 text-center">
+                <a class="pr-2 text-uppercase font-weight-bold">Select Date:</a>
+                <%= form.date_field :date, id:'new-booking-date', :required=>true %>
+            </div>
             <div>
-                <a class="pr-2">Room ID</a>
-                <%= form.text_field :roomname %>
+                <button type="button" id="first-next" class="btn btn-primary float-right">Next</>
             </div>
         </div>
+        <div id="new-booking-2" class="p-5"  style="display: none;">
+            <%= form.text_field :username, type:'hidden', :value => session[:username] %>
+            <%= form.text_field :roomname, type:'hidden' %>
+            <%= form.text_field :startTime, type:'hidden' %>
+            <%= form.text_field :endTime, type:'hidden' %>
 
-        <div class="d-flex py-3">
-            <div class="mx-2">
-                <a class="pr-2">Date</a>
-                <%= form.date_select :date %>
-            </div>
-        </div>
+            <table id="room-table-header" class="table table-secondary"><thead><tr><td colspan="12" id="date-placeholder" class="text-center"></td></tr><tr>
+                <td class="border-white" style="width: 10%"></td>
+                <%
+                    time = 800
+                   for i in 0..10
+                %>
+                    <td class="border-white text-center" style="width: 6%"><%= time>=1000 ? time : '0'+time.to_s %></td>
+                <%
+                    time+=100
+                    end
+                %>
+            </tr></thead></table>
 
-        <div class="d-flex pt-3 pb-5">
-            <div class="mx-2">
-                <a class="pr-2">Start Time</a>
-                <%= form.text_field :startTime %>
-            </div>
-            <div class="mx-2">
-                <a class="pr-2">End Time</a>
-                <%= form.text_field :endTime %>
-            </div>
-        </div>
+            <table id="room-table-body" class="table">
+                <tbody>
+                <% for room in @rooms %>
+                    <tr id="room_<%= room.id %>">
+                        <td class="room-row" style="width: 10%"><%= room.name %></td>
+                        <%
+                            time = 800
+                            for i in 0..10
+                        %>
+                            <td id="room_<%= room.id %>_<%= time %>" class="border-top-0 text-center unselected-cell" style="width: 6%"></td>
+                        <%
+                            time+=100
+                            end
+                        %>
+                    </tr>
+                <% end %>
+                </tbody>
+            </table>
 
-        <div>
-            <%= form.submit 'Add Booking', :class=>'btn btn-primary' %>
+            <div class="mt-5">
+                <button type="button" id="second-prev" class="btn btn-primary float-left">Back</>
+            </div>
+            <div>
+                <button type="submit" class="btn btn-primary float-right">Submit</button>
+            </div>
         </div>
     <% end %>
 </div>

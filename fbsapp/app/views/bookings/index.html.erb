@@ -56,8 +56,8 @@
                     <% end %>
                     <td class="align-middle text-center"><%= booking.roomname %></td>
                     <td class="align-middle text-center"><%= booking.date.to_date %></td>
-                    <td class="align-middle text-center"><%= booking.startTime %></td>
-                    <td class="align-middle text-center"><%= booking.endTime %></td>
+                    <td class="align-middle text-center"><%= if booking.startTime.length==4 then booking.startTime else '0'+booking.startTime end %></td>
+                    <td class="align-middle text-center"><%= if booking.endTime.length==4 then booking.endTime else '0'+booking.endTime end %></td>
                     <% if session[:username]=="admin" %>
                         <td class="align-middle text-center text-capitalized">
                         <div class="dropdown">
@@ -130,8 +130,8 @@
                     <% end %>
                     <td class="align-middle text-center"><%= booking.roomname %></td>
                     <td class="align-middle text-center"><%= booking.date.to_date %></td>
-                    <td class="align-middle text-center"><%= booking.startTime %></td>
-                    <td class="align-middle text-center"><%= booking.endTime %></td>
+                    <td class="align-middle text-center"><%= if booking.startTime.length==4 then booking.startTime else '0'+booking.startTime end %></td>
+                    <td class="align-middle text-center"><%= if booking.endTime.length==4 then booking.endTime else '0'+booking.endTime end %></td>
                     <% if session[:username]=="admin" %>
                         <td class="align-middle text-center">
                             <div class="dropdown">

@@ -1,7 +1,7 @@
 class BookingsController < ApplicationController
     def index
         if session[:username]=="admin"
-            @bookings = Booking.all
+            @bookings = Booking.order(:id)
         else
             @bookings = Booking.where(["username = ?", session[:username]])
         end
@@ -14,6 +14,8 @@ class BookingsController < ApplicationController
     end
 
     def new
+        @rooms = Room.all
+        @bookings = Booking.where(["status = ?", "Confirmed"])
         @booking = Booking.new
     end
     def edit
