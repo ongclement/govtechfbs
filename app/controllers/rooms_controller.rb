@@ -23,13 +23,15 @@ class RoomsController < ApplicationController
 
         photo = params['room']['room_image']
 
-        name = photo.original_filename
-        extname = name.partition('.').last
-        directory = "public/images"
-        path = File.join(directory, 'rooms_' + @room.id.to_s + '.'+ extname)
+        if photo
+            name = photo.original_filename
+            extname = name.partition('.').last
+            directory = "public/images"
+            path = File.join(directory, 'rooms_' + @room.id.to_s + '.'+ extname)
 
-        File.open(path, "wb") do |file|
-            file.write(photo.read)
+            File.open(path, "wb") do |file|
+                file.write(photo.read)
+            end
         end
         redirect_to rooms_url
     end
