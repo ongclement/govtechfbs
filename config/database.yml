@@ -48,6 +48,4 @@ test:
 #     url: <%= ENV['DATABASE_URL'] %>
 #
 production:
-  <<: *default
-  database: fbsapp_production
   url: mysql2://bca774f3f69e61:7cc5bf9f@us-cdbr-iron-east-03.cleardb.net/heroku_802c92a4cbc641c?reconnect=true
