@@ -4,9 +4,8 @@ FBSapp is a Ruby on Rails web application that allows admin users to create, upd
 
 Login into the application for the first time with the following credentials:
 
-Username    => admin
-
-Password    => password
+    Username    => admin
+    Password    => password
 
 Web Application Information:
 * Ruby 2.5.3p105
