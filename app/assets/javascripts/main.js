@@ -105,7 +105,7 @@ document.addEventListener("turbolinks:load", function() {
             }
 
             $('#new-booking-1').hide();
-            $('#new-booking-2').show();
+            $('#new-booking-2').css('display','inline');
         } else {
             alert("Date cannot be empty.")
         }

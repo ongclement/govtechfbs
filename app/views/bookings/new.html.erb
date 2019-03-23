@@ -10,8 +10,8 @@
 <% end %>
 
 <div class="mb-5 pb-5">
-    <span id="bookings-all" type="hidden" data-bookings= "<%= @bookings.to_json %>" />
-    <span id="rooms-all" type="hidden" data-rooms="<%= @rooms.to_json %>" />
+    <span id="bookings-all" type="hidden" data-bookings= "<%= @bookings.to_json %>"></span>
+    <span id="rooms-all" type="hidden" data-rooms="<%= @rooms.to_json %>"></span>
     <%= form_with scope: :booking, url: bookings_path, local: true do |form| %>
 
         <div id="new-booking-1" class="p-5">
