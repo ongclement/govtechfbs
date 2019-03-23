@@ -1,6 +1,6 @@
 # README
 
-FBSapp is a application that allows admin users to create, update, delete rooms/bookings/users. Users are allowed to book facilities and manage bookings.
+FBSapp is a Ruby on Rails web application that allows admin users to create, update, delete rooms/bookings/users. Users are allowed to book facilities and manage bookings.
 
 Web Application Information:
 * Ruby 2.5.3p105
