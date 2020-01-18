@@ -41,14 +41,14 @@
         </tr>
         </thead>
         <tbody>
-        <% if !@bookings or @bookings.where(["date >= ?", DateTime.now]).empty? %>
+        <% if !@bookings or @bookings.where(["date >= ?", Date.current]).empty? %>
             <tr>
                 <td colspan="8" class="text-center">
                     No Current Bookings.
                 </td>
             </tr>
         <% else %>
-            <% @bookings.where(["date >= ?", DateTime.now]).each do |booking| %>
+            <% @bookings.where(["date >= ?", Date.current]).each do |booking| %>
                 <tr class="text-center">
                     <% if session[:username]=="admin" %>
                         <td class="align-middle text-center"><%= booking.id %></td>
@@ -115,14 +115,14 @@
         </tr>
         </thead>
         <tbody>
-        <% if !@bookings or @bookings.where(["date < ?", DateTime.now]).empty? %>
+        <% if !@bookings or @bookings.where(["date < ?", Date.current]).empty? %>
             <tr>
                 <td colspan="8" class="text-center">
                     No Past Bookings.
                 </td>
             </tr>
         <% else %>
-            <% @bookings.where(["date < ?", DateTime.now]).each do |booking| %>
+            <% @bookings.where(["date < ?", Date.current]).each do |booking| %>
                 <tr class="text-center">
                     <% if session[:username]=="admin" %>
                         <td class="align-middle text-center"><%= booking.id %></td>
